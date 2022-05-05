@@ -1,7 +1,18 @@
-.title{
-  color: tomato;
+.todo-object{
+  border: solid black 1px;
+  margin: 40px;
+
 }
 
-.list-element{
-  color: green;
+.todo-object h1{
+  margin-left: 20px;
+}
+
+.tag {
+  background-color: rgba(214, 96, 214, 0.71);
+  border: solid black 1px;
+  border-radius: 10%;
+  display: inline-block;
+  margin: 10px 15px;
+  padding: 5px;
 }

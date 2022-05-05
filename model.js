@@ -21,7 +21,7 @@ class ToDo {
 
     constructor(title, priority = ToDo.PRIORITY.low, tags = []){
         this.title = title;
-        this.priority = priority;
+        this._priority = priority;
         this.tags = tags;
         this._creationDate = new Date().getTime();
     }
@@ -35,6 +35,14 @@ class ToDo {
         const timeStamp = this.getTime();
         this._creationDate = timeStamp;
     }
+
+    get priority(){
+        return this._priority;
+    }
+
+    set priority (newPriority){
+        this._priority = newPriority;
+    }
     
     toString(){
     
@@ -45,6 +53,9 @@ class ToDo {
         return toDoString;
       }
 
+
+      
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -54,6 +65,7 @@ class ToDo {
 //        super(title, priority, tags);
 //        this.subToDo = subToDo;
 //    }
+
 
 
 //    toString(){
@@ -67,7 +79,7 @@ class ToDo {
 
 class DeadLineToDo extends ToDo{
 
-    constructor(title, deadLineDate, priority = ToDo.PRIORITY.low, tags = []){
+    constructor(title, deadLineDate = null, priority = ToDo.PRIORITY.low, tags = []){
         super(title, priority, tags);
         if (deadLineDate === null) {
             this._deadLineDate = this._creationDate + (1000 * 60 * 60 * 24);
@@ -75,7 +87,7 @@ class DeadLineToDo extends ToDo{
             // tomorrow.setDate.apply(tomorrow.getDate()+1);
             // this._deadLineDate = tomorrow.getTime();
         } else {            
-            this._deadLineDate = deadLineDate;
+            this._deadLineDate = deadLineDate.getTime();
         }
     }
 
@@ -84,9 +96,34 @@ class DeadLineToDo extends ToDo{
         return date;
     }
 
-    set deadLineDate (date) {
-        const timeStamp = this.getTime();
+    set deadLineDate (newDate) {
+        const timeStamp = newDate.getTime();
         this._deadLineDate = timeStamp;
+    }
+
+    get priority(){
+        const nowTimeStamp = new Date().getTime();
+        const deltaTime = this._deadLineDate - nowTimeStamp;
+        
+        const day = 1000 * 60 * 60 * 24
+
+        let deadlinePriority;
+
+        if (deltaTime <= day){
+            deadlinePriority = ToDo.PRIORITY.veryHigh;
+        } else if (deltaTime <= (2*day)){
+            deadlinePriority = ToDo.PRIORITY.high;
+        } else if (deltaTime <= (3*day)){
+            deadlinePriority = ToDo.PRIORITY.medium
+        } else {
+            deadlinePriority = ToDo.PRIORITY.low
+        }
+
+        if (this._priority.order > deadlinePriority.order) {
+            return this._priority;
+        } else {
+            return deadlinePriority;
+        }
     }
 
     toString(){
@@ -96,4 +133,8 @@ class DeadLineToDo extends ToDo{
         return toDoString;
       }
 }
+
+
+
+
 
