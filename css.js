@@ -1,4 +1,4 @@
-function writeDocument (array){
+function writeActiveDocument (array){
 
     const container = document.getElementById('todo-container');
 
@@ -15,6 +15,7 @@ function writeDocument (array){
       const button = document.createElement('button');
       const textButton = document.createTextNode('Done');
       button.appendChild(textButton);
+      // button.onclick = getDone();
       div.appendChild(button);
 
       for (const tag of element.tags){
@@ -33,7 +34,7 @@ function writeDocument (array){
 
       const date = document.createElement('div');
 
-      const create =document.createElement('p');
+      const create = document.createElement('p');
       const textCreate = document.createTextNode('Creato: ' + element.creationDate.toDateString());
       create.classList.add("date")
       create.appendChild(textCreate);
@@ -65,6 +66,55 @@ function writeDocument (array){
     }
 }
 
+function writeDoneDocument (array){
+
+  const container = document.getElementById('done-container');
+
+  for (const element of array) {
+
+    const div = document.createElement('div');
+    div.classList.add('todo-object');
+
+    const title = document.createElement('h1');
+    const textTitle = document.createTextNode(element.title);
+    title.appendChild(textTitle);
+    div.appendChild(title);
+
+    for (const tag of element.tags){
+      const tagDiv = document.createElement('p');
+      tagDiv.classList.add("tag");
+      const tagText = document.createTextNode(tag);
+      tagDiv.appendChild(tagText);
+      div.appendChild(tagDiv);
+    }
+
+    const date = document.createElement('div');
+
+    const create = document.createElement('p');
+    const textCreate = document.createTextNode('Creato: ' + element.creationDate.toDateString());
+    create.classList.add("date")
+    create.appendChild(textCreate);
+    date.appendChild(create)
+    div.appendChild(date);
+
+    const expire =document.createElement('p');
+    if (element.deadLineDate !== undefined){
+      const textExpire = document.createTextNode('Scade il: ' + element.deadLineDate.toDateString());
+      expire.classList.add("exp-date")
+      expire.appendChild(textExpire);
+      date.appendChild(expire)
+      div.appendChild(date);
+
+    }
 
 
+    container.appendChild(div);
+  }
+}
 
+// function getDone(){
+//   const index = toDoList.indexOf(task1);
+//   doneList.push(task1);
+//   toDoList.splice(index, 1);
+//   return doneList;
+// }

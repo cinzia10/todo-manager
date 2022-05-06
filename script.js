@@ -5,7 +5,10 @@ const task4 = new DeadLineToDo('chiama pietro');
 
 const toDoList = [task1, task2, task3, task4];
 
-writeDocument(toDoList);
+const doneList = [];
+
+writeActiveDocument(toDoList);
+writeDoneDocument(doneList)
 
 // toDo1.title = 'Pulire';
 
