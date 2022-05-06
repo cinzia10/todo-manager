@@ -11,6 +11,7 @@
   position: relative;
 }
 
+
 .todo-object h1{
   margin-right: 0px;
 }
@@ -20,14 +21,22 @@ button{
   top: 20px;
   right: 20px;
   font-size: small;
+  border: none;
+  border-radius: 2%;
 }
 
 .tag {
-  background-color: rgb(120, 116, 116);
+  background-color: rgba(255, 255, 255, 0.63);
+  font-size: small;
+  font-weight: bold;
   border-radius: 10%;
-  padding: 3px;
+  padding: 5px;
   margin-left: 5px;
   display: inline-block;
+}
+
+.tag:hover{
+  background-color: #ffffff;
 }
 
 
