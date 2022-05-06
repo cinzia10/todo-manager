@@ -12,6 +12,11 @@ function writeDocument (array){
       title.appendChild(textTitle);
       div.appendChild(title);
 
+      const button = document.createElement('button');
+      const textButton = document.createTextNode('Done');
+      button.appendChild(textButton);
+      div.appendChild(button);
+
       for (const tag of element.tags){
         //   const tagDiv = document.createElement('div');
         //   const tagPar = document.createElement('p')
@@ -59,3 +64,7 @@ function writeDocument (array){
       container.appendChild(div);
     }
 }
+
+
+
+
