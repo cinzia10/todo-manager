@@ -16,7 +16,7 @@ function writeDocument (array){
         //   tagPar.appendChild(tagText)
         //   tagDiv.appendChild(tagPar);
         //   div.appendChild(tagDiv);
-        const tagDiv = document.createElement('h4');
+        const tagDiv = document.createElement('p');
         tagDiv.classList.add("tag")
         const tagText = document.createTextNode(tag);
         tagDiv.appendChild(tagText)
@@ -30,13 +30,13 @@ function writeDocument (array){
 
 
       if (element.priority === ToDo.PRIORITY.low){
-        div.style["background"] = "#3f3f3f";
+        div.style["background"] = "#b5e48c";
       } else if (element.priority === ToDo.PRIORITY.medium){
-        div.style["background"] = "yellow";
+        div.style["background"] = "#e9c46a";
       } else if (element.priority === ToDo.PRIORITY.high) {
-        div.style["background"] = "orange";
+        div.style["background"] = "#ff9500";
       } else {
-        div.style["background"] = "red";
+        div.style["background"] = "#ff392e";
       }
 
 
