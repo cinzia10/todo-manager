@@ -36,15 +36,14 @@ function writeDocument (array){
       div.appendChild(date);
 
       const expire =document.createElement('p');
-      const textExpire = document.createTextNode('Scade il: ' + element.creationDate.toDateString());
-      expire.classList.add("exp-date")
-      expire.appendChild(textExpire);
-      date.appendChild(expire)
-      div.appendChild(date);
-
-
-      
-
+      if (element.deadLineDate !== undefined){
+        const textExpire = document.createTextNode('Scade il: ' + element.deadLineDate.toDateString());
+        expire.classList.add("exp-date")
+        expire.appendChild(textExpire);
+        date.appendChild(expire)
+        div.appendChild(date);
+  
+      }
 
       if (element.priority === ToDo.PRIORITY.low){
         div.style["background"] = "#b5e48c";
