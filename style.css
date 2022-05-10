@@ -1,4 +1,4 @@
-#todo-container{
+#todo-container, #done-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -6,39 +6,42 @@
 .todo-object{
   border-radius: 3%;
   margin: 40px;
-  box-shadow: 5px 5px 15px 5px #0000007a;
+  box-shadow: 5px 5px 10px 5px #0000007a;
   padding: 20px;
   position: relative;
 }
 
-
-.todo-object h1{
-  margin-right: 0px;
+.todo-title{
+  font-size: large;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
-button{
+#todo-container button{
+  height: 40px;
+  width: 40px;
   position:absolute;
   top: 20px;
   right: 20px;
   font-size: small;
+  text-align: center;
   border: none;
-  border-radius: 2%;
+  border-radius: 20px;
 }
 
 .tag {
-  background-color: rgba(255, 255, 255, 0.63);
+  background-color: rgba(150, 143, 15, 0.63);
   font-size: small;
   font-weight: bold;
   border-radius: 10%;
   padding: 5px;
-  margin-left: 5px;
+  margin-left: 8px;
   display: inline-block;
 }
 
 .tag:hover{
-  background-color: #ffffff;
+  background-color: #c21010a5;
 }
-
 
 .date {
   float: left;
