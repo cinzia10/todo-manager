@@ -117,7 +117,7 @@ writeActiveList();
 
 function removeDoneToDo(element){
     toDoList = toDoList.filter(e => e.title !== element.title);
-    writeActiveList(toDoList);
+    writeActiveList();
     doneList.push(element);
     writeDoneList();
 }
